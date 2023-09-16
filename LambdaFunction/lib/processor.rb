@@ -33,7 +33,7 @@ module Lambda
 
       messages = [ { role: "user", content: prompt } ]
 
-      parametizer.set_params({messages: messages})
+      parametizer.set_params({messages: messages}) unless prompt == "/start"
 
       response = client.chat(parametizer.default_params)
 
