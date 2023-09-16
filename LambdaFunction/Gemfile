@@ -1,0 +1,52 @@
+source "https://rubygems.org"
+
+# HTTP client library, with support for multiple backends.
+gem "faraday"
+
+# API Libraries
+# Client for OpenAI API
+# Read more: https://github.com/alexrudall/ruby-openai
+gem "ruby-openai"
+# Anthropic - Only available in the US and UK
+# Read more: https://docs.anthropic.com/claude/reference/getting-started-with-the-api
+# gem "anthropic"
+
+# A wrappero fir the BPE tokenizer from OpenAI
+# gem "tiktoken_ruby"
+
+# Composability libraries for Generative AI
+# Boxcars is a library for composing Generative AI models.
+# Read more: https://github.com/BoxcarsAI/boxcars
+# gem "boxcars"
+# LaunchChain is a library for composing Generative AI models.
+# Read more: https://github.com/andreibondarev/langchainrb
+# gem "lanchainrb"
+
+
+
+# gem 
+
+gem "dotenv"
+
+
+# Amazon SDK for Ruby. Added most common services.
+# Review complete supported services here: https://github.com/aws/aws-sdk-ruby/#supported-services
+# gem "aws-sdk-ec2"
+# gem "aws-sdk-neptune"
+# gem "aws-sdk-qldb"
+# gem "aws-sdk-polly"
+# gem "aws-sdk-redshift"
+# gem "aws-sdk-rds"
+# gem "aws-sdk-cloudwatch"
+# gem "aws-sdk-ses"
+# gem "aws-sdk-sns"
+# gem "aws-sdk-sqs"
+# gem "aws-sdk-dynamodb"
+# gem "aws-sdk-s3"
+# gem "aws-sdk-glue"
+# gem "aws-sdk-iot"
+# gem "aws-sdk-lambda"
+
+# gem "rubocop"
+
+ruby '~> 3.2.0'
