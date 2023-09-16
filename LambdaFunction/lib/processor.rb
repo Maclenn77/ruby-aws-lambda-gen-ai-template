@@ -1,10 +1,11 @@
+# frozen_string_literal: true
+
 require 'logger'
 require_relative 'parametizer'
 
 module Lambda
   # This class processes the event received by the Lambda function
   class Processor
-
     # Telegram send message as { "body": "{\"message\":{\"chat\":{\"id\": \"user_id\"} }, {\"text\":\"Hello\"}}"
     # Change this Processor to fit your needs
     def initialize(event)
@@ -17,7 +18,7 @@ module Lambda
     def process_event
       prompt, chat_id = extract(@message)
 
-      response = prompt ? chat_response(prompt) : "No se cómo procesar tu mensaje. Asegúrate de que sea un mensaje de texto."
+      response = prompt ? chat_response(prompt) : logger.error(Messages::Logs::ERROR[:unprocessable])
       
       return respond_request(response) unless chat_id
 
@@ -35,7 +36,8 @@ module Lambda
 
       parametizer.set_params({messages: messages}) unless prompt == "/start"
 
-      response = client.chat(parametizer.default_params)
+      response = client.chat(parameters: parametizer.default_params)
+      return response.dig("error", "message") if response.dig("error")
 
       response.dig("choices", 0, "message", "content")
     end
@@ -45,7 +47,6 @@ module Lambda
         chat_id = body.dig("message", "chat", "id")
         
         [prompt, chat_id]
-      end
     end
 
     def missing?(extracted) = extracted.any? { |e| e.nil? }

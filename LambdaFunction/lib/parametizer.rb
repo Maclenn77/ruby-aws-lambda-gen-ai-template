@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Modify default params
 class Parametizer
   attr_accessor :default_params
