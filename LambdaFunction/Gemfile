@@ -13,6 +13,9 @@ gem "ruby-openai"
 # Anthropic - Only available in the US and UK
 # Read more: https://docs.anthropic.com/claude/reference/getting-started-with-the-api
 # gem "anthropic"
+# Hugging-Face Wrapper API
+# Read more: https://github.com/alchaplinsky/hugging-face
+# gem "hugging-face"
 
 # A wrapper for the BPE tokenizer from OpenAI
 # gem "tiktoken_ruby"
