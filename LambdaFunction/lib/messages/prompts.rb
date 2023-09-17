@@ -22,5 +22,6 @@ module Messages
     # It's more easy now to add more messages or change previous ones
     # Add it in the parameter as "messages: Messages::Content.example"
     example = [sys_message, asst_message, usr_message] # rubocop:disable Lint/UselessAssignment
+
   end
 end

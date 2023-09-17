@@ -3,6 +3,7 @@
 require "openai"
 require "logger"
 
+
 # Example of a client class for OpenAI
 module Clients
   # Inherit from OpenAI::Client to setting up for your own use case

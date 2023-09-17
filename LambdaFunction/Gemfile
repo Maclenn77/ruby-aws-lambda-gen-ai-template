@@ -1,5 +1,8 @@
 source "https://rubygems.org"
 
+# gem 
+gem "dotenv"
+
 # HTTP client library, with support for multiple backends.
 gem "faraday"
 
@@ -10,8 +13,11 @@ gem "ruby-openai"
 # Anthropic - Only available in the US and UK
 # Read more: https://docs.anthropic.com/claude/reference/getting-started-with-the-api
 # gem "anthropic"
+# Hugging-Face Wrapper API
+# Read more: https://github.com/alchaplinsky/hugging-face
+# gem "hugging-face"
 
-# A wrappero fir the BPE tokenizer from OpenAI
+# A wrapper for the BPE tokenizer from OpenAI
 # gem "tiktoken_ruby"
 
 # Composability libraries for Generative AI
@@ -21,13 +27,6 @@ gem "ruby-openai"
 # LaunchChain is a library for composing Generative AI models.
 # Read more: https://github.com/andreibondarev/langchainrb
 # gem "lanchainrb"
-
-
-
-# gem
-
-gem "dotenv"
-
 
 # Amazon SDK for Ruby. Added most common services.
 # Review complete supported services here: https://github.com/aws/aws-sdk-ruby/#supported-services
