@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-require 'openai'
-require 'logger'
+require "openai"
+require "logger"
 
 # Example of a client class for OpenAI
 module Clients

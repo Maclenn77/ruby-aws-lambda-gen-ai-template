@@ -24,7 +24,7 @@ gem "ruby-openai"
 
 
 
-# gem 
+# gem
 
 gem "dotenv"
 
@@ -49,4 +49,4 @@ gem "dotenv"
 
 # gem "rubocop"
 
-ruby '~> 3.2.0'
+ruby "~> 3.2.0"

@@ -1,25 +1,29 @@
 # frozen_string_literal: true
 
-require 'logger'
-require_relative 'parametizer'
+require "logger"
+require_relative "parametizer"
 
 module Lambda
   # This class processes the event received by the Lambda function
   class Processor
-    # Telegram send message as { "body": "{\"message\":{\"chat\":{\"id\": \"user_id\"} }, {\"text\":\"Hello\"}}"
+    # Telegram send message as { "body": "{\"message\":{\"chat\":{\"id\": \"user_id\"} },
+    #                                                  {\"text\":\"Hello\"}}"
     # Change this Processor to fit your needs
     def initialize(event)
-      @message = JSON.parse(event.dig("body"))
+      @message = JSON.parse(event["body"])
 
       # Add logs for info or debugging
       @logger = Logger.new($stdout)
     end
-    
+
     def process_event
       prompt, chat_id = extract(@message)
 
-      response = prompt ? chat_response(prompt) : logger.error(Messages::Logs::ERROR[:unprocessable])
-      
+      response = if prompt then chat_response(prompt)
+                 else
+                   logger.error(Messages::Logs::ERROR[:unprocessable])
+                 end
+
       return respond_request(response) unless chat_id
 
       respond_telegram(response, chat_id)
@@ -32,30 +36,30 @@ module Lambda
 
       parametizer = Parametizer.new
 
-      messages = [ { role: "user", content: prompt } ]
+      messages = [{ role: "user", content: prompt }]
 
-      parametizer.set_params({messages: messages}) unless prompt == "/start"
+      parametizer.add_params({ messages: }) unless prompt == "/start"
 
       response = client.chat(parameters: parametizer.default_params)
-      return response.dig("error", "message") if response.dig("error")
+      return response.dig("error", "message") if response["error"]
 
       response.dig("choices", 0, "message", "content")
     end
 
     def extract(body)
-        prompt = body.dig("message", "text")
-        chat_id = body.dig("message", "chat", "id")
-        
-        [prompt, chat_id]
+      prompt = body.dig("message", "text")
+      chat_id = body.dig("message", "chat", "id")
+
+      [prompt, chat_id]
     end
 
-    def missing?(extracted) = extracted.any? { |e| e.nil? }
+    def missing?(extracted) = extracted.any?(&:nil?)
 
     def respond_request(reply)
       {
         statusCode: 200,
         body: {
-          message: reply,
+          message: reply
         }.to_json
       }
     end
@@ -66,4 +70,3 @@ module Lambda
     end
   end
 end
-    
