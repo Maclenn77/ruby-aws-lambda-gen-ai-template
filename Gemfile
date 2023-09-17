@@ -1,6 +1,6 @@
 source "https://rubygems.org"
 
 group :test do
-  gem "test-unit"
   gem "mocha"
+  gem "test-unit"
 end

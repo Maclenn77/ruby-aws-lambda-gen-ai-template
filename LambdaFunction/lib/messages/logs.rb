@@ -7,8 +7,8 @@ module Messages
       start: "Starting Lambda Function",
       sent: "Sent message",
       received: "Received message",
-      finish: "Finishing Lambda Function",
-    }
+      finish: "Finishing Lambda Function"
+    }.freeze
 
     ERROR = {
       no_chat_id: "No chat id found",
@@ -18,10 +18,11 @@ module Messages
       no_body: "No body found",
       no_text: "No text found",
       unprocessable: "Unprocessable request. Did you send a text message?",
-      invalid_role: "Invalid role. Options are :system, :assistant and :user",
-    }
+      invalid_role: "Invalid role. Options are :system, :assistant and :user"
+    }.freeze
 
-    def self.debug(message, object = nil) = object.nil? ? "#{message}" : "#{message}: #{object.inspect}"
-
+    def self.debug(message, object = nil)
+      object.nil? ? message : "#{message}: #{object.inspect}"
+    end
   end
 end
